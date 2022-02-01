@@ -5,9 +5,10 @@ from django.utils import timezone
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        posted = datetime(2022, 1, 1, 10)
-        posted = timezone.make_aware(posted)
+        posted = timezone.now()
         p1 = Post.objects.create(posted=posted)
         p2 = Post.objects.get(pk=p1.pk)
         print(p1.posted)
         print(p2.posted)
+        print("equal", p1.posted == p2.posted)
+
