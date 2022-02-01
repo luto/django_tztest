@@ -1,0 +1,18 @@
+---
+version: "3"
+
+volumes:
+  data:
+
+services:
+  db:
+    image: "postgres"
+    shm_size: "256M"
+    environment:
+      POSTGRES_USER: "marvin"
+      POSTGRES_PASSWORD: "store-a-list-of-domains"
+    ports:
+      - "65431:5432"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "data:/var/lib/postgresql/data"
